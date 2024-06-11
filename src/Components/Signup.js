@@ -46,7 +46,7 @@ const Signup = (props) => {
   };
 
   return (
-    <div className="container my-2 w-25 p-4 bg-info text-center">
+    <div className="container my-2 p-4 bg-info text-center">
       <div>
         <h2>Sign up</h2>
         <form onSubmit={handleSubmit}>

@@ -16,7 +16,7 @@ const Signup = (props) => {
     
     if (password === cpassword) {
       const response = await fetch(
-        "http://localhost:5000/api/auth/CreateUser",
+        "https://mern-api-backend-rho.vercel.app/api/auth/CreateUser",
         {
           method: "POST",
           headers: {

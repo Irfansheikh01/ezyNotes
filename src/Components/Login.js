@@ -7,7 +7,7 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/loginUser", {
+    const response = await fetch(`https://mern-api-backend-rho.vercel.app/api/auth/loginUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

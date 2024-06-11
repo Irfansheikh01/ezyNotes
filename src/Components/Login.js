@@ -35,15 +35,17 @@ const Login = (props) => {
   };
 
   return (
-    <div className="container my-2">
+    
+    <div className="container my-2 w-25 p-4 bg-info text-center">
+      <h2 className="my-4">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label className="form-label">Email address</label>
           <input
             type="email"
             className="form-control"
             id="email"
             name="email"
+            placeholder="Email"
             required
             onChange={onChange}
             value={credentials.email}
@@ -51,23 +53,29 @@ const Login = (props) => {
           />
         </div>
         <div className="mb-3">
-          <label className="form-label">Password</label>
           <input
             type="password"
             className="form-control"
             id="password"
             name="password"
+            placeholder="Password"
             required
             value={credentials.password}
             onChange={onChange}
           />
         </div>
-
-        <button type="submit" className="btn btn-primary">
+        
+        <button type="submit" className="btn btn-dark">
           Submit
         </button>
+        
       </form>
-    </div>
+      </div>
+
+    
+   
+    
+ 
   );
 };
 

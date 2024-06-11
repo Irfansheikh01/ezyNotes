@@ -46,16 +46,17 @@ const Signup = (props) => {
   };
 
   return (
-    <div className="container my-2">
+    <div className="container my-2 w-25 p-4 bg-info text-center">
       <div>
+        <h2>Sign up</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label className="form-label">Name</label>
             <input
               type="text"
               className="form-control"
               id="name"
               name="name"
+              placeholder="Name"
               required
               minLength={3}
               onChange={onChange}
@@ -63,12 +64,12 @@ const Signup = (props) => {
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Email</label>
             <input
               type="email"
               className="form-control"
               id="email"
               name="email"
+              placeholder="Email"
               required
               onChange={onChange}
               value={credentials.email}
@@ -76,12 +77,12 @@ const Signup = (props) => {
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Password</label>
             <input
               type="password"
               className="form-control"
               id="password"
               name="password"
+              placeholder="Password"
               required
               minLength={3}
               value={credentials.password}
@@ -89,12 +90,12 @@ const Signup = (props) => {
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Confrim Password</label>
             <input
               type="password"
               className="form-control"
               id="cpassword"
               name="cpassword"
+              placeholder="Confirm Password"
               required
               minLength={3}
               value={credentials.cpassword}
@@ -102,7 +103,7 @@ const Signup = (props) => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-dark">
             Submit
           </button>
         </form>

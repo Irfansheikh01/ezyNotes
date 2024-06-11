@@ -41,7 +41,7 @@ const Navbar = () => {
             </ul>
             {!localStorage.getItem('token')? <div>
             <Link className="btn btn-primary mx-2" to="/Login" role="button">Login</Link>
-            <Link className="btn btn-primary mx-2" to="/Signup" role="button">Singup</Link> 
+            <Link className="btn btn-primary mx-2" to="/Signup" role="button">Signup</Link> 
             </div>: <button className='btn btn-primary' onClick={handleLogout}>Logout</button>}
           </div>
         </div>

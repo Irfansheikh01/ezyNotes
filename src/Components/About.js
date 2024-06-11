@@ -4,7 +4,8 @@ const About = () => {
  
   return (
     <div>
-      This is about Page.
+      EzyNotes : Your notes on the cloud!
+      Access your notes securly from anywhere. 
     </div>
   ) 
 }

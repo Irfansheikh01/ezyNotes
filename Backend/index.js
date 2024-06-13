@@ -7,13 +7,13 @@ connectToMongo();
 const app = express()
 const port = 5000
 
-app.use(cors(
-  {
-    origin: ["https://ezynotes.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true
-}
-))
+// app.use(cors(
+//   {
+//     origin: ["https://ezynotes.vercel.app"],
+//     methods: ["POST", "GET"],
+//     credentials: true
+// }
+// ))
 app.use(express.json())
 
 //Available Routs

@@ -17,6 +17,7 @@ const Signup = (props) => {
     if (password === cpassword) {
       const response = await fetch(
         "https://mern-api-backend-rho.vercel.app/api/auth/CreateUser",
+        // "http://localhost:5000/api/auth/CreateUser",
         {
           method: "POST",
           headers: {
@@ -45,8 +46,21 @@ const Signup = (props) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  const [eye, setEye] = useState("fa-eye-slash");
+  const passShow = (e) => {
+    e.preventDefault();
+    var x = document.getElementById("password");
+    if (x.type === "text") {
+      x.type = "password";
+      setEye("fa-eye-slash");
+    } else if (x.type === "password") {
+      x.type = "text";
+      setEye("fa-eye");
+    }
+  };
+
   return (
-    <div className="container my-2 p-4 bg-info text-center">
+    <div className="container my-2 p-4 text-center">
       <div>
         <h2>Sign up</h2>
         <form onSubmit={handleSubmit}>
@@ -76,7 +90,7 @@ const Signup = (props) => {
               aria-describedby="emailHelp"
             />
           </div>
-          <div className="mb-3">
+          <div className="mb-3 input-group">
             <input
               type="password"
               className="form-control"
@@ -88,6 +102,9 @@ const Signup = (props) => {
               value={credentials.password}
               onChange={onChange}
             />
+            <div className="input-group-addon" onClick={passShow}>
+            <i className={`fa ${eye} m-2`} aria-hidden="true"></i>
+          </div>
           </div>
           <div className="mb-3">
             <input

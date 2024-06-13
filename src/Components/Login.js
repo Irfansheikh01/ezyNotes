@@ -8,6 +8,7 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(`https://mern-api-backend-rho.vercel.app/api/auth/loginUser`, {
+    // const response = await fetch(`http://localhost:5000/api/auth/loginUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,11 +23,11 @@ const Login = (props) => {
     if (json.success) {
       //save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
-      props.showAlert("success","Logged in successfully!");
+      props.showAlert("success", "Logged in successfully!");
       navigate("/");
     } else {
       // alert("Invalid credentials!!");
-      props.showAlert("danger",json.error);
+      props.showAlert("danger", json.error);
     }
   };
 
@@ -34,9 +35,21 @@ const Login = (props) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  const [eye, setEye] = useState("fa-eye-slash");
+  const passShow = (e) => {
+    e.preventDefault();
+    var x = document.getElementById("password");
+    if (x.type === "text") {
+      x.type = "password";
+      setEye("fa-eye-slash");
+    } else if (x.type === "password") {
+      x.type = "text";
+      setEye("fa-eye");
+    }
+  };
+
   return (
-    
-    <div className="container my-2 p-4 bg-info text-center">
+    <div className="container my-2 p-4  text-center">
       <h2 className="my-4">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -52,7 +65,8 @@ const Login = (props) => {
             aria-describedby="emailHelp"
           />
         </div>
-        <div className="mb-3">
+
+        <div className="mb-3 input-group">
           <input
             type="password"
             className="form-control"
@@ -63,19 +77,16 @@ const Login = (props) => {
             value={credentials.password}
             onChange={onChange}
           />
+          <div className="input-group-addon" onClick={passShow}>
+            <i className={`fa ${eye} m-2`} aria-hidden="true"></i>
+          </div>
         </div>
-        
+
         <button type="submit" className="btn btn-dark">
           Submit
         </button>
-        
       </form>
-      </div>
-
-    
-   
-    
- 
+    </div>
   );
 };
 

@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 const Notes = (props) => {
   let navigate = useNavigate();
   const context = useContext(noteContext);
-  const { notes, getNotes, editNote } = context;
+  const { notes, getNotes, editNote, deleteNote, user, getUserDetails } = context;
 
   useEffect(() => {
     if(localStorage.getItem('token')){
       getNotes();
+      getUserDetails();
     }
     else{
       navigate('/Login')
@@ -19,7 +20,9 @@ const Notes = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  const ref = useRef(null);
+  const refUpdate = useRef(null);
+  const refDelete = useRef('null');
+  const [deleteNoteID, setDeleteNoteID] = useState(null);
   const [note, setNote] = useState({
     eid: "",
     etitle: "d",
@@ -28,7 +31,7 @@ const Notes = (props) => {
   });
 
   const updateNote = (currenNote) => {
-    ref.current.click();
+    refUpdate.current.click();
     setNote({
       eid: currenNote._id,
       etitle: currenNote.title,
@@ -46,12 +49,24 @@ const Notes = (props) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
 
+  const deleteIconClicked = (id) =>{
+    // document.getElementById('refDeleteModal').click();
+    refDelete.current.click();
+    setDeleteNoteID(id);
+  } 
+  const handleDelete = (e) =>{
+    e.preventDefault();
+    deleteNote(deleteNoteID);
+    props.showAlert("success", "Note is deleted successfully!");
+  }
+
   return (
     <>
+      <div className="container"><i>Welcome {user.name}!</i></div>
       <AddNote showAlert={props.showAlert} />
 
       <button
-        ref={ref}
+        ref={refUpdate}
         type="button"
         className="btn btn-primary d-none"
         data-bs-toggle="modal"
@@ -145,6 +160,62 @@ const Notes = (props) => {
         </div>
       </div>
 
+
+      <button
+        ref={refDelete}
+        type="button"
+        // id = "refDeleteModal"
+        className="btn btn-primary d-none"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteModal"
+      >
+        Launch demo modal for DELETE
+      </button>
+
+      <div
+        className="modal fade"
+        id="deleteModal"
+        tabIndex="-1"
+        aria-labelledby="deleteModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="deleteModalLabel">
+                Delete a note
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+            Are you sure you want to delete this item?
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+                onClick={handleDelete}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className=" container row my-3">
         <h2> Your Notes:</h2>
         <div className="container">
@@ -156,6 +227,7 @@ const Notes = (props) => {
               key={note._id}
               note={note}
               updateNote={updateNote}
+              deleteIconClicked = {deleteIconClicked}
               showAlert={props.showAlert}
             />
           );

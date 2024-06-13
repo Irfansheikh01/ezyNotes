@@ -21,7 +21,6 @@ const AddNote = (props) => {
       <h2>Add a note</h2>
       <form>
         <div className="form-group">
-          <label>Title</label>
           <input
             type="text"
             className="form-control my-2"
@@ -35,8 +34,7 @@ const AddNote = (props) => {
           
         </div>
         <div className="form-group">
-          <label >Description</label>
-          <input
+          <textarea
             type="text"
             className="form-control my-2"
             id="description"
@@ -47,7 +45,6 @@ const AddNote = (props) => {
           />
         </div>
         <div className="form-group">
-          <label >Tag</label>
           <input
             type="text"
             className="form-control my-2"

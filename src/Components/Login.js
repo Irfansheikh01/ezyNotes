@@ -66,7 +66,7 @@ const Login = (props) => {
           />
         </div>
 
-        <div className="mb-3 input-group">
+        <div className="mb-3 input-group relative d-flex align-items-center">
           <input
             type="password"
             className="form-control"
@@ -77,7 +77,7 @@ const Login = (props) => {
             value={credentials.password}
             onChange={onChange}
           />
-          <div className="input-group-addon" onClick={passShow} style={{border: '1px solid #e3d4d4', borderRadius: '0px 5px 5px 0px'}}>
+          <div className="input-group-addon" onClick={passShow} style={{position:'absolute', right:'15px'}}>
             <i className={`fa ${eye} m-2`} aria-hidden="true" ></i>
           </div>
         </div>

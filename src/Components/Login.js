@@ -77,8 +77,8 @@ const Login = (props) => {
             value={credentials.password}
             onChange={onChange}
           />
-          <div className="input-group-addon" onClick={passShow}>
-            <i className={`fa ${eye} m-2`} aria-hidden="true"></i>
+          <div className="input-group-addon" onClick={passShow} style={{border: '1px solid #e3d4d4', borderRadius: '0px 5px 5px 0px'}}>
+            <i className={`fa ${eye} m-2`} aria-hidden="true" ></i>
           </div>
         </div>
 

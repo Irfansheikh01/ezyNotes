@@ -90,7 +90,7 @@ const Signup = (props) => {
               aria-describedby="emailHelp"
             />
           </div>
-          <div className="mb-3 input-group">
+          <div className="mb-3 input-group relative">
             <input
               type="password"
               className="form-control"
@@ -102,8 +102,8 @@ const Signup = (props) => {
               value={credentials.password}
               onChange={onChange}
             />
-            <div className="input-group-addon" onClick={passShow}>
-            <i className={`fa ${eye} m-2`} aria-hidden="true"></i>
+            <div className="input-group-addon" onClick={passShow} style={{position:'absolute', right:'15px', top:'5px'  }}>
+            <i className={`fa ${eye}`} aria-hidden="true"></i>
           </div>
           </div>
           <div className="mb-3">

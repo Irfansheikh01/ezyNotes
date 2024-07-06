@@ -1,11 +1,12 @@
 import React from "react";
-import Notes from './Notes'
+import Notes from "./Notes";
 
 const Home = (props) => {
-    
   return (
-    <div>
-      <Notes showAlert={props.showAlert} />
+    <div className="bg-light">
+      <div className="container">
+        <Notes showAlert={props.showAlert} />
+      </div>
     </div>
   );
 };

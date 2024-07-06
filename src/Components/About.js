@@ -74,8 +74,8 @@ const About = () => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body">
-                ezyNotes is available for free use. You don't have to pay anyting to use it.
-                 It has user friendly layouts makes it easy to use.
+                ezyNotes is available for free to use. You don't have to pay anything to use it.
+                 It has user friendly layouts that makes it easy to use.
               </div>
             </div>
           </div>

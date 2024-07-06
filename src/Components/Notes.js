@@ -112,7 +112,7 @@ const Notes = (props) => {
                 </div>
                 <div className="form-group">
                   <label>Description</label>
-                  <input
+                  <textarea
                     type="text"
                     className="form-control"
                     id="edescription"

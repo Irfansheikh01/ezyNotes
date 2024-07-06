@@ -32,7 +32,7 @@ const Signup = (props) => {
         //save the auth token and redirect
         localStorage.setItem("token", json.authtoken);
         props.showAlert("success", "Account created successfully!");
-        navigate("/");
+        navigate("/home");
       } else {
         //alert("Could not sign up!! Try again!");
         props.showAlert("danger", json.error);
@@ -60,9 +60,10 @@ const Signup = (props) => {
   };
 
   return (
+    <div className="login-signup-bg">
     <div className="container my-2 p-4 text-center">
       <div>
-        <h2>Sign up</h2>
+        <h2 className="my-4">Sign up</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <input
@@ -102,7 +103,7 @@ const Signup = (props) => {
               value={credentials.password}
               onChange={onChange}
             />
-            <div className="input-group-addon" onClick={passShow} style={{position:'absolute', right:'15px'}}>
+            <div className="input-group-addon" onClick={passShow} style={{position:'absolute', right:'15px', color:'black', zIndex:'10'}}>
             <i className={`fa ${eye}`} aria-hidden="true"></i>
           </div>
           </div>
@@ -120,11 +121,12 @@ const Signup = (props) => {
             />
           </div>
 
-          <button type="submit" className="btn btn-dark">
-            Submit
+          <button type="submit" className="btn btn-dark border">
+            Sign up
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

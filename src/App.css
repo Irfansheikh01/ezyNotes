@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* landing page css */
+.landing-main{
+  background-image: url('../public/hero3.jpg');
+  height: 93vh;
+  margin-top: -50px;
+  background-size: cover;
+  background-repeat: none;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+ 
+ .div-left{
+  font-size:90px ;
+  font-weight: bold;
+  width: 40%;
+ }
+ .div-left-inner{
+   line-height: 1.1;
+   color:orange;
+ }
+ 
+ 
+ .div-left-span{
+   color:gray;
+   font-size: 80px;
+ }
+ .div-right{
+   width: 40%;
+   font-size: 18px;
+   color:rgb(180, 175, 175);
+ }
+ .div-right p{
+   font-family: 'Courier New', Courier, monospace;
+ }
+ .div-right button{
+   background-color:transparent;
+   border: 0;
+   color:orange;
+   font-weight: bold;
+ }
+ 
+ .div-right button:hover{
+   border:2px solid white;
+   border-radius: 15px;
+   background-color:black;
+   color:white;
+   font-weight: bold;
+ }
+ 
+ 
+ @media screen and (max-width: 900px){
+   .landing-main{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-evenly;
+     width: 100%;
+     gap:10px;
+   }
+   .div-left{
+     font-size:50px ;
+     font-weight: bold;
+     width: 80%;
+    }
+ 
+    .div-left-inner img{
+     width: 45px;
+     height: 45px;
+    }
+    .div-left-span{
+     color:gray;
+     font-size: 40px;
+   }
+ 
+    .div-right{
+     width: 80%;
+     font-size: 18px;
+     line-height: 1.1;
+   }
+ }
+ 
+ .login-signup-bg{
+   background-image: url('../public/hero3.jpg');
+  height: 93vh;
+  margin-top: -58px;
+  background-size: cover;
+  color:white;
 }

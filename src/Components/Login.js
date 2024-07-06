@@ -24,7 +24,7 @@ const Login = (props) => {
       //save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
       props.showAlert("success", "Logged in successfully!");
-      navigate("/");
+      navigate("/home");
     } else {
       // alert("Invalid credentials!!");
       props.showAlert("danger", json.error);
@@ -49,43 +49,49 @@ const Login = (props) => {
   };
 
   return (
-    <div className="container my-2 p-4  text-center">
-      <h2 className="my-4">Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            placeholder="Email"
-            required
-            onChange={onChange}
-            value={credentials.email}
-            aria-describedby="emailHelp"
-          />
-        </div>
-
-        <div className="mb-3 input-group relative d-flex align-items-center">
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            placeholder="Password"
-            required
-            value={credentials.password}
-            onChange={onChange}
-          />
-          <div className="input-group-addon" onClick={passShow} style={{position:'absolute', right:'15px'}}>
-            <i className={`fa ${eye} m-2`} aria-hidden="true" ></i>
+    <div className="login-signup-bg">
+      <div className="container my-2 p-4  text-center">
+        <h2 className="my-4">Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+              onChange={onChange}
+              value={credentials.email}
+              aria-describedby="emailHelp"
+            />
           </div>
-        </div>
 
-        <button type="submit" className="btn btn-dark">
-          Submit
-        </button>
-      </form>
+          <div className="mb-3 input-group relative d-flex align-items-center">
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+              value={credentials.password}
+              onChange={onChange}
+            />
+            <div
+              className="input-group-addon"
+              onClick={passShow}
+              style={{ position: "absolute", right: "15px", color:'black', zIndex:'10' }}
+            >
+              <i className={`fa ${eye} m-2`} aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <button type="submit" className="btn btn-dark border">
+            Log In
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

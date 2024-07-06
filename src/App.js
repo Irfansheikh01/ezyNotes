@@ -27,14 +27,14 @@ function App() {
       <Router>
         <Navbar />
         <Alert alert={alert}/>
-        <div className="container">
+        {/* <div className="container"> */}
         <Routes>
           <Route path="/" element={<Home showAlert={showAlert}/>} />
           <Route path="/about" element={<About showAlert={showAlert}/>} />
           <Route path="/Login" element={<Login showAlert={showAlert} />} />
           <Route path="/Signup" element={<Signup showAlert={showAlert} />} />
         </Routes>
-        </div>
+        {/* </div> */}
         <Footer />
       </Router>
     </NoteState>

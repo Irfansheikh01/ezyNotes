@@ -10,6 +10,8 @@ import Alert from "./Components/Alert";
 import { useState } from "react";
 import Footer from "./Components/Footer";
 import Landing from "./Components/Landing";
+import Expense from "./Components/MonthlyExpense/Expense";
+import ExpenseState from "./context/expenses/ExpenseState";
 
 function App() {
   const[alert, setAlert] = useState(null)
@@ -25,6 +27,7 @@ function App() {
 
   return (
     <NoteState>
+      <ExpenseState>
       <Router>
         <Navbar />
         <Alert alert={alert}/>
@@ -35,10 +38,12 @@ function App() {
           <Route path="/about" element={<About showAlert={showAlert}/>} />
           <Route path="/Login" element={<Login showAlert={showAlert} />} />
           <Route path="/Signup" element={<Signup showAlert={showAlert} />} />
+          <Route path="/Expense" element={<Expense showAlert={showAlert} />} />
         </Routes>
         {/* </div> */}
         <Footer />
       </Router>
+      </ExpenseState>
     </NoteState>
   );
 }

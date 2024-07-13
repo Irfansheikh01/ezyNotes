@@ -2,8 +2,9 @@ import { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
-  const host = "https://mern-api-backend-rho.vercel.app"
-  // const host = "http://localhost:5000"
+  const [loading, setLoading] = useState(false);
+  // const host = "https://mern-api-backend-rho.vercel.app"
+  const host = "http://localhost:5000"
   const [notes, setNotes] = useState([])
   const [user,setUser] = useState([])
 
@@ -26,6 +27,7 @@ const NoteState = (props) => {
   //Get all Notes
   const getNotes = async ()=>{
     //api call to get all notes
+    setLoading(true);
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: "GET",
       headers: {
@@ -34,6 +36,7 @@ const NoteState = (props) => {
       }
   });
    const json = await response.json();
+   setLoading(false);
   //  console.log(json);
    setNotes(json);
   }
@@ -100,7 +103,7 @@ const NoteState = (props) => {
   }
   
   return (
-    <NoteContext.Provider value={{notes,addNote,deleteNote,editNote, getNotes, getUserDetails, user, setUser}}>
+    <NoteContext.Provider value={{notes,addNote,deleteNote,editNote, getNotes, getUserDetails, user, setUser, loading}}>
       {props.children}
     </NoteContext.Provider>
   );

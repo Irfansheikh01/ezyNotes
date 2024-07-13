@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 
 const Login = (props) => {
+  const [loading, setLoading] = useState(false);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // set loading true so that spinner will show loading spinner
     const response = await fetch(`https://mern-api-backend-rho.vercel.app/api/auth/loginUser`, {
     // const response = await fetch(`http://localhost:5000/api/auth/loginUser`, {
       method: "POST",
@@ -19,6 +22,7 @@ const Login = (props) => {
       }),
     });
     const json = await response.json();
+    setLoading(false); // set loading false after it fetches the data
     // console.log(json);
     if (json.success) {
       //save the auth token and redirect
@@ -86,10 +90,12 @@ const Login = (props) => {
               <i className={`fa ${eye} m-2`} aria-hidden="true"></i>
             </div>
           </div>
-
+          {loading && <Spinner />}
+         {!loading && <>
           <button type="submit" className="btn btn-dark border">
             Log In
           </button>
+           </>}
         </form>
       </div>
     </div>

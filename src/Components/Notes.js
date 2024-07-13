@@ -3,11 +3,12 @@ import noteContext from "../context/notes/noteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import { useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 
 const Notes = (props) => {
   let navigate = useNavigate();
   const context = useContext(noteContext);
-  const { notes, getNotes, editNote, deleteNote, user, getUserDetails } = context;
+  const { notes, getNotes, editNote, deleteNote, user, getUserDetails, loading } = context;
 
   useEffect(() => {
     if(localStorage.getItem('token')){
@@ -219,9 +220,10 @@ const Notes = (props) => {
       <div className=" container row my-3">
         <h2> Your Notes:</h2>
         <div className="container">
-          {notes.length === 0 && "No notes to display"}
+        {loading && <Spinner />}
+          {!loading  && notes.length === 0 && "No notes to display"}
         </div>
-        {notes.map((note) => {
+        {!loading  && notes.map((note) => {
           return (
             <NoteItem
               key={note._id}

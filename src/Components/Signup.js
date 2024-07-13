@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 
 const Signup = (props) => {
+  const [loading, setLoading] = useState(false);
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -15,6 +17,7 @@ const Signup = (props) => {
     e.preventDefault();
     
     if (password === cpassword) {
+      setLoading(true); // set loading true so that spinner will show loading spinner
       const response = await fetch(
         "https://mern-api-backend-rho.vercel.app/api/auth/CreateUser",
         // "http://localhost:5000/api/auth/CreateUser",
@@ -27,6 +30,7 @@ const Signup = (props) => {
         }
       );
       const json = await response.json();
+      setLoading(false); // set loading false after it get responses from server
       console.log(json);
       if (json.success) {
         //save the auth token and redirect
@@ -120,10 +124,12 @@ const Signup = (props) => {
               onChange={onChange}
             />
           </div>
-
+          {loading && <Spinner />}
+         {!loading && <>
           <button type="submit" className="btn btn-dark border">
             Sign up
           </button>
+          </>}
         </form>
       </div>
     </div>

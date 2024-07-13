@@ -1,4 +1,9 @@
-/* landing page css */
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+/* ---- landing page css : START -----*/
 .landing-main{
   background-image: url('../public/hero3.jpg');
   height: 93vh;
@@ -89,3 +94,72 @@
   background-size: cover;
   color:white;
 }
+/* ---------landing page css : END------------ */
+
+/* ------- Expense page CSS : START --------- */
+.Expense-main{
+  min-height: 90vh;
+}
+
+.Expense-inputs{
+  display: flex;
+  flex-direction: column;
+  margin:0 20px;
+  gap:20px;
+}
+
+.Expense-inputs input[type="date"]:invalid {
+  color: red; /* Optionally change the color to indicate invalid state of date */
+}
+
+.Expense-details{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.Expense-details-total{
+  padding:8px;
+  border: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Expense-details-total h5{
+  margin: 0;  /*h5 tag was automatically taking bottom margin 8px */
+}
+.Expense-details-total input{
+  width:30%;
+}
+
+/* style for big screen like laptop and desktops */
+@media only screen and (min-width: 768px) {
+
+  .Expense-main{
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+  }
+
+  .Expense-inputs{
+    display: flex;
+    flex-direction: row;
+    /* width:51%; */
+ }
+ 
+  .Expense-details{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    /* max-width: 60%; */
+    /* justify-content: center; */
+    /* margin:20px; */
+  }
+  
+}
+/* Expense page CSS : END */

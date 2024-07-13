@@ -113,7 +113,7 @@
 }
 
 .Expense-details{
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,7 +132,7 @@
   margin: 0;  /*h5 tag was automatically taking bottom margin 8px */
 }
 .Expense-details-total input{
-  width:30%;
+  width:40%;
 }
 
 /* style for big screen like laptop and desktops */

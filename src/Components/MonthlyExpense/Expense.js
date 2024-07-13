@@ -169,7 +169,7 @@ const Expense = (props) => {
                   <tr key={row._id}>
                     <td>{row.desc}</td>
                     <td>{row.amount}</td>
-                    <td style={{minWidth:'100px'}}>{row.date.slice(0, 10)}</td>
+                    <td>{row.date.slice(0, 10)}</td>
                     <td>
                       {/* <button onClick={() => removeItem(row._id)}>Remove</button> */}
                       <i className="fa-solid fa-trash-can mx-2" onClick={() => removeItem(row._id)}></i>
@@ -186,7 +186,7 @@ const Expense = (props) => {
                 <tr key={row._id}>
                   <td>{row.desc}</td>
                   <td>{row.amount}</td>
-                  <td style={{minWidth:'100px'}}>{row.date.slice(0, 10)}</td>
+                  <td>{row.date.slice(0, 10)}</td>
                   <td>
                     {/* <button onClick={() => removeItem(row._id)}>Remove</button> */}
                     <i className="fa-solid fa-trash-can mx-2" onClick={() => removeItem(row._id)}></i>

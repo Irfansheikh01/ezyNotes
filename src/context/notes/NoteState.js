@@ -3,8 +3,8 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
   const [loading, setLoading] = useState(false);
-  // const host = "https://mern-api-backend-rho.vercel.app"
-  const host = "http://localhost:5000"
+  const host = "https://mern-api-backend-rho.vercel.app"
+  // const host = "http://localhost:5000"
   const [notes, setNotes] = useState([])
   const [user,setUser] = useState([])
 

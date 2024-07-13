@@ -100,7 +100,7 @@ const Expense = (props) => {
           id="desc"
           name="desc"
           minLength={2}
-          maxLength={25}
+          maxLength={20}
           placeholder="Description"
           value={exps.desc}
           onChange={handleChange}

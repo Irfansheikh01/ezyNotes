@@ -3,7 +3,7 @@ import React from 'react'
 const About = () => {
  
   return (
-    <div className="bg-light" style={{ height: "90vh" }}>
+    <div className="bg-light" style={{ minHeight: "90vh" }}>
       <div className="container">
         <h4 className="">About Us</h4>
         <div className="accordion" id="accordionExample">

@@ -74,8 +74,31 @@ const About = () => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body">
-                ezyNotes is available for free to use. You don't have to pay anything to use it.
+                EzyNotes is available for free to use. You don't have to pay anything to use it.
                  It has user friendly layouts that makes it easy to use.
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                <strong>Manage Your Expenses</strong>
+              </button>
+            </h2>
+            <div
+              id="collapseFour"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body">
+                You can manage you expense at ezyNotes - Expense section. You can add your expenses and get them down in table. You can search your expenses by description, amount or date in search tab. It will provide you Total expenses amount live on the go. You can check your monthly expense just by providing date in : yyyy-mm; you will get your monthly expense list with total amount spent.
               </div>
             </div>
           </div>

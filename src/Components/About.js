@@ -98,7 +98,7 @@ const About = () => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body">
-                You can manage you expense at ezyNotes - Expense section. You can add your expenses and get them down in table. You can search your expenses by description, amount or date in search tab. It will provide you Total expenses amount live on the go. You can check your monthly expense just by providing date in : yyyy-mm; you will get your monthly expense list with total amount spent.
+                You can manage your expense at ezyNotes - Expense section. You can add your expenses and get the list down in table. You can search your expenses by description, amount or date in search tab. It will provide you Total expenses amount live on the go. You can check your monthly expense just by providing date in : 'yyyy-mm' format; you will get your monthly expense list with total amount spent.
               </div>
             </div>
           </div>

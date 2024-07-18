@@ -41,20 +41,73 @@ const Expense = (props) => {
     props.showAlert("success", "Expense is deleted successfully!");
   };
 
-  const handleSearch = (event) => {
-    const value = event.target.value.toLowerCase();
-    setSearchTerm(value); // Update searchTerm state
+  // This code provides search functionality for all three fields
+  // const handleSearch = (event) => {
+  //   const value = event.target.value.toLowerCase();
+  //   setSearchTerm(value); // Update searchTerm state
 
-    // Filter expense(data from api) based on any column containing search term
-    if (value.trim() === "") {
+  //   // Filter expense(data from api) based on any column containing search term
+  //   if (value.trim() === "") {
+  //     setFilteredData([]);
+  //   } else {
+  //     const filteredArray = expense.filter(
+  //       (item) =>
+  //         item.desc.toLowerCase().includes(value) ||
+  //         item.amount.toString().includes(value) || // Convert amount to string for comparison
+  //         item.date.slice(0, 10).includes(value) // slice(0,10) is used to remove time from date to exclude time from searching
+  //     );
+  //     setFilteredData(filteredArray); // Update filtered data state
+  //   }
+  // };
+
+  // This code provides search functionality with date range for date, nrml search for other fields
+  const handleSearch = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    setSearchTerm(searchTerm); // Update searchTerm state
+
+    let startDate = null;
+    let endDate = null;
+
+    // Splitting the search term into parts for different fields
+    if (searchTerm.includes(":")) {
+      const parts = searchTerm.split(":").map((part) => part.trim());
+
+      // Extracting start and end dates if available
+      if (parts.length === 2) {
+        startDate = new Date(parts[0]);
+        endDate = new Date(parts[1]);
+        // Adjust endDate to include full day if searching for a single date
+        endDate.setDate(endDate.getDate() + 1);
+      }
+      // else {
+      //   // If only one part is provided, treat it as a single date
+      //   startDate = new Date(parts[0]);
+      //   endDate = new Date(parts[0]);
+      //   // Adjust endDate to include full day if searching for a single date
+      //   endDate.setDate(endDate.getDate() + 1);
+      // }
+    }
+    // Filter expense (data from API) based on any column containing search term
+    if (searchTerm.trim() === "") {
       setFilteredData([]);
     } else {
-      const filteredArray = expense.filter(
-        (item) =>
-          item.desc.toLowerCase().includes(value) ||
-          item.amount.toString().includes(value) || // Convert amount to string for comparison
-          item.date.slice(0, 10).includes(value) // slice(0,10) is used to remove time from date to exclude time from searching
-      );
+      const filteredArray = expense.filter((item) => {
+        // Check if item matches search term in desc, amount, and date range
+        const descMatches = item.desc.toLowerCase().includes(searchTerm);
+        const amountMatches = item.amount.toString().includes(searchTerm);
+
+        // Check if item matches date range if dates are provided
+        let dateMatches = true;
+        const itemDate = new Date(item.date);
+        if (startDate && endDate) {
+          dateMatches = itemDate >= startDate && itemDate < endDate;
+        } else {
+          dateMatches = item.date.slice(0, 10).includes(searchTerm);
+        }
+
+        return descMatches || amountMatches || dateMatches;
+      });
+
       setFilteredData(filteredArray); // Update filtered data state
     }
   };

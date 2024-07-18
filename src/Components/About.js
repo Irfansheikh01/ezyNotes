@@ -98,7 +98,8 @@ const About = () => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body">
-                You can manage your expense at ezyNotes - Expense section. You can add your expenses and get the list down in table. You can search your expenses by description, amount or date in search tab. It will provide you Total expenses amount live on the go. You can check your monthly expense just by providing date in : 'yyyy-mm' format; you will get your monthly expense list with total amount spent.
+              You can manage you expense at ezyNotes - Expense section. You can add your expenses and get them down in table. You can search your expenses by description, amount or date in search tab. It will provide you Total expenses amount live on the go. You can check your monthly expense just by providing date in : <span style={{color:'blue'}}>yyyy-mm</span>; you will get your monthly expense list with total amount spent. 
+              If you want to get expense list for a particular date range, you can simply provide two dates seperated by a colon in search input as: <span style={{color:'blue'}}>yyyy-mm-dd : yyyy-mm-dd </span>( Ex: 2024-01-12 : 2024-01-25 )
               </div>
             </div>
           </div>

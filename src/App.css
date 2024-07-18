@@ -138,7 +138,7 @@
   margin: 0;  /*h5 tag was automatically taking bottom margin 8px */
 }
 .Expense-details-total input{
-  width:50%;
+  width:40%;
 }
 
 /* style for big screen like laptop and desktops */
@@ -168,9 +168,7 @@
     /* justify-content: center; */
     /* margin:20px; */
   }
-  .Expense-details-total input{
-    width:40%;
-  }
+ 
 }
 /* Expense page CSS : END */
 

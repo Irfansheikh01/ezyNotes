@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import expenseContext from "../../context/expenses/expenseContext";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner";
+import './Expense.css'
 
 const Expense = (props) => {
   let navigate = useNavigate();
@@ -33,13 +34,48 @@ const Expense = (props) => {
     props.showAlert("success","Expense is added successfully");
   };
 
+  // --- Delete confirmation messagebox code starts -----------
+  const [showMessageBox, setShowMessageBox] = useState(false);
+  const [clickedRowId, setClickedRowId] = useState(null);
+  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
 
+  // Function to handle delete button click
+  const handleDeleteClick = (e, index) => {
+    const buttonRect = e.target.getBoundingClientRect();
+    const top = e.clientX - buttonRect.left; 
+    const left = e.clientY - buttonRect.top;
+    // requestAnimationFrame : helps ensure that the browser reflows and applies the styles before the transition starts.
+    requestAnimationFrame(() => {
+      // Show the message box and set position
+      setShowMessageBox(!showMessageBox);
+    });
 
-  const removeItem = (id) => {
-    deleteExpense(id); //this calls api to delte an expense with passed id
-    setFilteredData(filteredData.filter((item) => item._id !== id)); //this deletes an expense with provided id in searched results
-    props.showAlert("success", "Expense is deleted successfully!");
+    setButtonPosition({ top, left });
+    // Set the row id that was clicked
+    setClickedRowId(index);
+    console.log(index);
   };
+
+  // Function to handle confirming delete action
+  const handleConfirmDelete = (e, id) => {
+    e.preventDefault();
+    //this calls api to delte an expense with passed id
+    deleteExpense(id);
+    //this deletes an expense with provided id in searched results
+    setFilteredData(filteredData.filter((item) => item._id !== id));
+    props.showAlert("success", "Expense is deleted successfully!");
+
+    setShowMessageBox(!showMessageBox);
+    setClickedRowId(null);
+  };
+
+  // Function to handle canceling delete action
+  const handleCancelDelete = () => {
+    // Reset state
+    setShowMessageBox(!showMessageBox);
+    setClickedRowId(null);
+  };
+  // --- Delete confirmation messagebox code : ENDS -----------
 
   // This code provides search functionality for all three fields
   // const handleSearch = (event) => {
@@ -218,15 +254,33 @@ const Expense = (props) => {
             {/* Render based on filteredData if there's a search term, otherwise render all */}
             {searchTerm ? (
               filteredData.length > 0 ? (
-                filteredData.map((row) => (
-                  <tr key={row._id}>
+                filteredData.map((row,index) => (
+                  <tr key={index}>
                     <td>{row.desc}</td>
                     <td>{row.amount}</td>
                     <td>{row.date.slice(0, 10)}</td>
-                    <td>
-                      {/* <button onClick={() => removeItem(row._id)}>Remove</button> */}
-                      <i className="fa-solid fa-trash-can mx-2" onClick={() => removeItem(row._id)}></i>
-                    </td>
+                    <td style={{ position: "relative" }}>
+                        {/* <button onClick={() => removeItem(row._id)}>Remove</button> */}
+                        <i
+                          className="fa-solid fa-trash-can mx-2"
+                          onClick={(e) => handleDeleteClick(e, index)}
+                        ></i>
+                        {clickedRowId === index && (
+                          <div
+                            className={`message-box ${showMessageBox ? "visible" : "hidden"}`}
+                              style={{
+                                top: buttonPosition.top,
+                                left: buttonPosition.left,
+                            }}
+                          >
+                            Delete?
+                            <button onClick={(e) => handleConfirmDelete(e, row._id)}>
+                               ✔
+                            </button>
+                            <button onClick={handleCancelDelete}>❌</button>
+                          </div>
+                        )}
+                      </td>
                   </tr>
                 ))
               ) : (
@@ -235,15 +289,33 @@ const Expense = (props) => {
                 </tr>
               )
             ) : (
-              expense.map((row) => (
-                <tr key={row._id}>
+              expense.map((row,index) => (
+                <tr key={index}>
                   <td>{row.desc}</td>
                   <td>{row.amount}</td>
                   <td>{row.date.slice(0, 10)}</td>
-                  <td>
-                    {/* <button onClick={() => removeItem(row._id)}>Remove</button> */}
-                    <i className="fa-solid fa-trash-can mx-2" onClick={() => removeItem(row._id)}></i>
-                  </td>
+                  <td style={{ position: "relative" }}>
+                      {/* <button onClick={() => removeItem(row._id)}>Remove</button> */}
+                      <i
+                        className="fa-solid fa-trash-can mx-2"
+                        onClick={(e) => handleDeleteClick(e, index)}
+                      ></i>
+                      {clickedRowId === index && (
+                        <div
+                          className={`message-box ${showMessageBox ? "visible" : "hidden"}`}
+                            style={{
+                              top: buttonPosition.top,
+                              left: buttonPosition.left,
+                          }}
+                        >
+                          Delete?
+                          <button onClick={(e) => handleConfirmDelete(e, row._id)}>
+                            ✔
+                          </button>
+                          <button onClick={handleCancelDelete}>❌</button>
+                        </div>
+                      )}
+                    </td>
                 </tr>
               ))
             )}

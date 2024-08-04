@@ -1,0 +1,8 @@
+
+.login-signup-bg{
+    background-image: url('../Images/hero3.jpg');
+   height: 93vh;
+   margin-top: -58px;
+   background-size: cover;
+   color:white;
+ }

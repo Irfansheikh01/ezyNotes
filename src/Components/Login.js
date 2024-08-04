@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
+import './CSS/LoginSignupBg.css';
 
 const Login = (props) => {
   const [loading, setLoading] = useState(false);

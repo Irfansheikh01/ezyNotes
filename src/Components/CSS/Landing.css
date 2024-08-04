@@ -1,0 +1,92 @@
+/* ---- landing page css : START -----*/
+.landing-main{
+    background-image: url('../Images/hero3.jpg');
+    height: 93vh;
+    margin-top: -50px;
+    background-size: cover;
+    background-repeat: none;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   }
+   
+   .div-left{
+    font-size:90px ;
+    font-weight: bold;
+    width: 40%;
+   }
+   .div-left-inner{
+     line-height: 1.1;
+     color:orange;
+   }
+   
+   
+   .div-left-span{
+     color:gray;
+     font-size: 80px;
+   }
+   .div-right{
+     width: 40%;
+     font-size: 18px;
+     color:rgb(180, 175, 175);
+   }
+   .div-right p{
+     font-family: 'Courier New', Courier, monospace;
+   }
+   .div-right button{
+     background-color:transparent;
+     border: 0;
+     color:orange;
+     font-weight: bold;
+     padding:5px;
+   }
+   
+   .div-right button:hover{
+     border:2px solid white;
+     border-radius: 17px;
+     background-color:black;
+     color:white;
+     font-weight: bold;
+   }
+   
+   
+   @media screen and (max-width: 900px){
+     .landing-main{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-evenly;
+       width: 100%;
+       gap:10px;
+     }
+     .div-left{
+       font-size:50px ;
+       font-weight: bold;
+       width: 80%;
+      }
+   
+      .div-left-inner img{
+       width: 45px;
+       height: 45px;
+      }
+      .div-left-span{
+       color:gray;
+       font-size: 40px;
+     }
+   
+     .div-right{
+      width: 80%;
+      font-size: 15px;
+      line-height: 1.1;
+    }
+    .div-right p:nth-child(2){
+      /* It will increase font-sie for second <p> tag for small screens */
+      font-size: 18px;
+      line-height: 1.1;
+    }
+  }
+   
+  /* ---------landing page css : END------------ */
+  

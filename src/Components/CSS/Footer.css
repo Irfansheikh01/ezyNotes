@@ -1,0 +1,39 @@
+/*----- Footer page CSS : START----- */
+
+footer{
+    background-color:#212529;
+    padding:25px 0;
+  }
+  .footer-main{
+    background-color:#212529;
+    color:white;
+    display:flex;
+    flex-direction: column;
+  }
+  .footer-main .footer-div{
+    margin: 2rem 3rem;
+  }
+  .footer-main h5{
+    font-weight: bold;
+  }
+  .footer-main ul{
+    padding:0;
+  }
+  .footer-main li{
+    list-style-type: none;
+  }
+  .footer-main a{  /* This style will work for Link tag also */
+    text-decoration: none;
+    color:#d1d5db;   
+  }
+  .footer-main a:hover{
+    color:#6b7280
+  }
+  @media only screen and (min-width: 768px) {
+    .footer-main{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+  /*----- Footer page CSS : END------- */

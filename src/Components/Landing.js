@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import './CSS/Landing.css'
+import pen from './Images/pen2.png'
 
 const Landing = () => {
     let navigate = useNavigate();
@@ -8,7 +9,7 @@ const Landing = () => {
       <div className='landing-main'>
          
           <div className='div-left'>
-              <div className='div-left-inner'>EzyNotes <img src='../pen2.png' width={'70px'} height={'70px'} alt={'pen'}></img> <span className='div-left-span' >Your Notes on cloud </span></div>
+              <div className='div-left-inner'>EzyNotes <img src={pen} width={'70px'} height={'70px'} alt={'pen'}></img> <span className='div-left-span' >Your Notes on cloud </span></div>
           </div>
           
           <div className='div-right' >

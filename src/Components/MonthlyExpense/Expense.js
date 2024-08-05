@@ -289,7 +289,7 @@ const Expense = (props) => {
                 </tr>
               )
             ) : (
-              expense.map((row,index) => (
+              expense.slice().reverse().map((row,index) => (
                 <tr key={index}>
                   <td>{row.desc}</td>
                   <td>{row.amount}</td>
